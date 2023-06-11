@@ -7,4 +7,6 @@ Realizar un escrito con los siguiente cuatro puntos:
 3. Elegir un problema de nuestro interés
 4. Desarrollo matemático amplio y detallado de las matemáticas que se usan en el problema, usando dicha red neuronal.
 
-Enlace al Documento [Aqui](MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c.md)
+Enlace al Documento [Aqui](MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c.md) - Markdwon
+
+Enlace a la pagina html [Aqui](MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c.html)
