@@ -6,3 +6,5 @@ Realizar un escrito con los siguiente cuatro puntos:
 2. Esquema General de las matemáticas que involucran las redes neuronales con sus respectivos diagramas de flujo.
 3. Elegir un problema de nuestro interés
 4. Desarrollo matemático amplio y detallado de las matemáticas que se usan en el problema, usando dicha red neuronal.
+
+Enlace al Documento [Aqui](MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c.md)
