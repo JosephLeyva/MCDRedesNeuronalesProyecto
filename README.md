@@ -9,4 +9,7 @@ Realizar un escrito con los siguiente cuatro puntos:
 
 Enlace al Documento [Aqui](MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c.md) - Markdwon
 
-Enlace a la pagina html [Aqui](MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c.html)
+Enlace Web
+----
+Para ver la pagina, vaya al [siguiente enlace:](
+https://josephleyva.github.io/MCDRedesNeuronalesProyecto/MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c.html)
