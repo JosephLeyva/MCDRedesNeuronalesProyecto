@@ -1,0 +1,679 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>MCD RedesNeuronales Proyecto</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="13d57348-939a-436b-9077-20411ef1657c" class="page sans"><header><h1 class="page-title">MCD RedesNeuronales Proyecto</h1><p class="page-description"></p></header><div class="page-body"><h1 id="f97b680c-2a05-46ff-89a2-e33b43bc6972" class="">MCD RedesNeuronales Proyecto</h1><h2 id="66d6ed04-765c-4c96-b5f5-5e7f441a9a75" class="">Documento con conceptos y matemáticas empleadas en las redes neuronales, incluído un ejemplo práctico.</h2><p id="0f09c941-5f99-4068-a296-7c88ef219470" class="">Realizar un escrito con los siguiente cuatro puntos:</p><ol type="1" id="3d3248c5-8775-48da-acd5-97f41c639ac1" class="numbered-list" start="1"><li>Definición y ejemplos de lo que es una red neuronal</li></ol><ol type="1" id="4717e82c-5a9c-4475-b3aa-17d8fd799940" class="numbered-list" start="2"><li>Esquema General de las matemáticas que involucran las redes neuronales con sus respectivos diagramas de flujo.</li></ol><ol type="1" id="1058ed5e-3204-42da-bcf7-a7bfc99f6d59" class="numbered-list" start="3"><li>Elegir un problema de nuestro interés</li></ol><ol type="1" id="77e817d9-7510-42a3-aa6c-1d76676e3362" class="numbered-list" start="4"><li>Desarrollo matemático amplio y detallado de las matemáticas que se usan en el problema, usando dicha red neuronal.</li></ol><h1 id="73c01609-0643-4113-a103-01c68c31098e" class="">1. Definición y ejemplos de Redes Neuronales</h1><h2 id="e442fdde-aefa-4dca-b853-a0ba15b7c653" class="">1.1 Definición</h2><p id="33407f35-3b71-47c0-82cb-c04d27a90178" class="">Las redes neuronales artificiales son técnicas populares de aprendizaje automático que simulan el mecanismo de aprendizaje en organismos biológicos. El sistema nervioso humano contiene células que se conocen como <em>neuronas</em>. Las neuronas están conectadas entre sí mediante el uso de <em>axones </em>y <em>dendritas</em>, y las regiones de conexión entre axones y dendritas se denominan <em>sinapsis</em>. Las conexiones sinápticas a menudo cambian su fortaleza en respuesta a estímulos externos. Este cambio es cómo ocurre el aprendizaje en los organismos vivos. Este mecanismo biológico se simula en redes neuronales artificiales, que contienen unidades de cálculo que se conocen como neuronas.  Las unidades de cálculo están conectadas entre sí mediante pesos, que desempeñan el mismo papel que las fortalezas de las conexiones sinápticas en los organismos biológicos. Cada entrada a una neurona se escala con un peso, que afecta a la función calculada en esa unidad.</p><figure id="ff2b0921-eead-4bb7-ba9b-598f68154cde" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled.png"><img style="width:630px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled.png"/></a></figure><h2 id="4f820bf2-8632-4206-9211-dba844bd5239" class="">1.2. Ejemplos</h2><p id="de170c29-454e-4da1-9268-bbb17a55be2e" class="">Existen varias arquitecturas de redes neuronales. Las más comunes son:</p><h3 id="4f461238-9dc1-4d98-baad-4172ae23338f" class="">1.2.1 Perceptron</h3><p id="b2d9cbe3-407a-45e1-8fd8-74335da1500c" class="">Una neurona artificial, o <em>perceptrón</em>, toma varias entradas y realiza una suma ponderada para producir una salida. El peso del perceptron es determinado durante el proceso de entrenamiento y es basado en los datos que se usaron para entrenarlo. </p><figure id="b507f646-b203-4193-9035-eb780a29840e" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%201.png"><img style="width:400px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%201.png"/></a></figure><h3 id="e1408ba8-a8ea-496c-ab1e-3f9b13832ee0" class="">1.2.2 Perceptrón Multicapa</h3><p id="4d5f0c78-6bda-4354-b560-b1f494e75532" class="">La siguiente imagen es un perceptrón multicapa.</p><figure id="86e2c5b1-c185-418d-8968-0fc0b9a23095" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%202.png"><img style="width:336px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%202.png"/></a></figure><p id="114cb72a-7d47-4c0e-800e-5d6a959e23bb" class="">Varias entradas de <em>x</em> pasan a través de una capa oculta de perceptrones y son sumadas para la salida. El teorema universal de aproximación sugiere que una red neuronal puede aproximar cualquier función. La capa oculta tambien puede ser conocida como <strong>capa densa (dense layer)</strong>. Cada capa puede tener una función de activación (que puede ser distinta o no). El número de capas ocultas y de perceptrones puede ser elegido en base al problema a resolver.</p><p id="7ae63023-4b4b-4c45-9c4a-ea2b88848438" class="">Una red perceptrón multicapa puede ser usada para problemas de clasificación multi-clase. Un <strong>problema de clasificación multi-clase (multi-class classification problem)</strong> trata de discriminar más de 10 categorías.</p><h3 id="f524132d-5b21-4622-b4bb-6d66d1b08418" class="">1.2.3 Redes Neuronales Convolucionales</h3><p id="b02dea5a-56b4-41e6-9dd4-9ec171ef6a26" class="">Las redes neuronales convolucionales  (CNNs) al igual que las ANN normales tienen pesos, bias y salidas mediante una activación no-lineal. </p><p id="e0943afd-6135-4b70-b867-de3851384d6a" class="">Las redes neuronales regulares toman entradas y las neuronas se conectan completamente (fully connected) a las siguientes capas.  Las neuronas dentro de la misma capa no comparten ninguna conexión.</p><p id="bba3cac9-7ee1-42ee-8705-25ab2be71b2b" class="">Si usamos redes neuronales regulares para imágenes, por ejemplo, van a terminar siendo <strong>muy grandes en tamaño debido al gran número de neuronas</strong> y, como consecuencia, en <strong>sobreentrenamiento</strong>. Es por eso que este tipo de redes no deben de usarse para entrenarse con imágenes, debido a que las imágenes son muy grandes en tamaño. Al incrementarse el tamaño del modelo, se requiere un enorme número de neuronas.</p><p id="8ad361e6-96b5-4ade-953f-689b927ba518" class="">Una imagen puede ser considerada como un volumen con dimensiones de altura, anchura y profundidad. La profundidad es el canal  de la imágen, la cual si es a color suele ser RGB (red,blue,green). </p><p id="95d658fe-1a47-407a-9b96-733095ad5dd8" class="">Las neuronas de una CNN están dispuestas de forma volumétrica para aprovechar el volumen. Cada una de las capas transforma el volumen de entrada en un volumen de salida:</p><figure id="1e88e9b6-6410-417f-9759-89afcb826d32" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%203.png"><img style="width:469px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%203.png"/></a></figure><p id="92fbbf64-5728-431e-994d-dadb3c9659b1" class="">Los filtros de red neuronal convolucional codifican (encode) por transformación. Los filtros aprendidos detectan características o patrones en las imágenes. Cuanto más profunda es la capa, más abstracto es el patrón. Algunos análisis han demostrado que estas capas tienen la capacidad de detectar bordes, esquinas y patrones.</p><h3 id="09b13907-14e7-4838-afca-3c4ffb2714ca" class="">1.2.4 Redes Neuronales Recurrentes</h3><p id="315a91fb-bd0a-4804-ac9d-f98543b4ec72" class="">Las RNN pueden modelar información sequencial. Ellas no asumen que los data points son intensivos. Las RNN realizan la misma tarea desde el output de los datos previos de una serie de datos secuencial. Esto puede ser pensdo o catalogado como si tuviesen “memoria”. Las RNN no pueden recordar secuencias o tiempos más largos. Se despliega durante el proceso de entrenamiento, como se muestra en la siguiente imagen:</p><figure id="58622bd2-8c75-41a0-8057-dccdcd658278" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%204.png"><img style="width:576px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%204.png"/></a></figure><p id="6b98f96d-3d68-4254-832a-7b33a3c88f7e" class="">Como se muestra en la imagen, durante cada iteración se despliega y se entrena cada vez. Durante el back-prop (propagación hacia atrás), los gradientes pueden desaparecer con el tiempo. Para atacar este problema, existen las LSTM para recordar en un periodo más largo del tiempo.</p><h3 id="46dd603f-5d35-44c9-896e-ea9aab19d76e" class="">1.2.5 Redes Generativas Antagónicas</h3><p id="cde2bf92-aede-4489-8107-bb9ba141500d" class="">Son utilizadas en la generación de contenido nuevo y realista, como imágenes, música y texto. Se componen de dos redes: el generador, que crea muestras sintéticas, y el discriminador, que evalúa si las muestras son reales o falsas. Recientemente han ganado popularidad por ser la base de motores de AI para generar y procesar imágenes.</p><h2 id="5193845a-387d-4768-a64c-3072cdbdda00" class="">1.3 Aplicaciones</h2><h3 id="f38d97ba-ffd6-49e0-965b-21535a20ac72" class="">1.3.1 Computer Vision</h3><p id="9a558455-363f-48e7-8b46-19478b76b083" class="">La visión por computadora permite que las computadoras adopten la posibilidad de ver como los humanos. Los diferentes problemas que son propios de la visión artificial puede ser atacados y resueltos efectivamente con técnicas de deep learning. Entre las principales aplicaciones, podemos encontrar problemas de clasificación de imágenes, detección y segmentación de objetos, o incluso analizar videos.
+</p><figure id="e9975e83-394c-402a-8bc4-9e2de96da705" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%205.png"><img style="width:930px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%205.png"/></a></figure><h3 id="18c059eb-c947-4b86-960e-6e211c187b3f" class="">1.3.2 Natural Language Processing</h3><p id="df37e82f-8877-4db2-af87-d97a18d35c5d" class="">El procesamiento del lenguaje natural (PLN) es una rama de la inteligencia artificial y la lingüística computacional que se ocupa de la interacción entre las computadoras y el lenguaje humano. Su objetivo principal es permitir que las computadoras comprendan, interpreten y generen lenguaje humano de manera similar a como lo hacen los seres humanos.</p><p id="c98b9c81-1cc8-40c1-911a-2024b2dbce81" class="">Las redes neuronales se usan en estos ejemplos para traducción automática de videos, análisis de sentimientos en textos o artículos/comentarios de opinión, así como generación automática de texto.</p><figure id="52df5f28-0035-46a6-bed2-38520c2fc08c" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%206.png"><img style="width:384px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%206.png"/></a></figure><h3 id="1eca988d-13bf-448f-9d5f-0e577f80505c" class="">1.3.3 Time Series</h3><p id="f3bc36a0-9b1b-4870-8330-8684da78cb8d" class="">El deep learning ha demostrado ser efectivo en el análisis y predicción de series de tiempo. Algunas aplicaciones específicas incluyen pronósticos de clima, finanzas o mercado financiero. También se puede usar en marketing para ver la predicción de oferta/demanda, e incluso para Transporte y vía pública donde se puede predecir cantidad de tráfico y el flujo de vehículos. </p><figure id="01aa47dd-4eb9-41b1-9d2c-bc2bfbdf5980" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%207.png"><img style="width:900px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%207.png"/></a></figure><h1 id="cba61784-73aa-41e0-aba3-a5095d21be44" class="">2. Esquema General de las matemáticas que involucran las redes neuronales</h1><p id="16d77aaa-10f6-4f9c-9206-f65bc41f0971" class="">En cuanto a las matemáticas que se usan para las redes neuronales es una combinación entre Algebra Lineal, Probabilidad y Estadística, Cálculo de varias variables y optimización.</p><h2 id="efaa17ef-93fe-4e79-ab6f-8ddc5bf41c85" class="">2.1 Algebra Lineal</h2><p id="00a5556a-e03a-487a-8447-7c835f0e6400" class="">El álgebra lineal es el cimiento del aprendizaje automático y el aprendizaje profundo. El álgebra lineal nos brinda los fundamentos matemáticos para resolver las ecuaciones que utilizamos para construir modelos. Veamos algunos conceptos básicos:</p><h3 id="9b9fda7d-7021-4655-9093-1a9c5070e905" class="">2.1.1 Escalar</h3><p id="b83d7ceb-27be-4a75-a4ad-c8a878f5d9ab" class="">En matemáticas, cuando se menciona el término escalar, nos referimos a elementos en un vector. Un escalar es un número real y un elemento de un campo usado para definir un vector
+espacio.</p><p id="10dba225-fc69-4e01-b015-a333f3bf4300" class="">En informática, el término escalar es sinónimo del término variable y es una ubicación de almacenamiento emparejada con un nombre simbólico. Esta ubicación de almacenamiento contiene una cantidad desconocida de información llamada valor</p><h3 id="4fb0c1d5-3541-4250-a14f-915415dd5e92" class="">2.1.2 Vector</h3><p id="135a38c5-54b1-410c-b778-5313ce2aa5a3" class="">Para nuestro uso, definimos un vector de la siguiente manera:</p><blockquote id="8a9a2a28-e2cf-4695-9a69-98f14ecf7968" class="">Para un entero positivo n, un vector es una n-tupla, conjunto (múltiple) ordenado o matriz de n números, llamados elementos o escalares.</blockquote><p id="7ea93722-8a4a-4a24-bca0-7532a7992887" class="">Lo que estamos diciendo es que queremos crear una estructura de datos llamada vector a través de un proceso llamado vectorización. El número de elementos en el vector se denomina &quot;orden&quot; (o &quot;longitud&quot;) del vector. Los vectores también pueden representar puntos en un espacio n-dimensional.</p><p id="5e1ca534-48a0-43de-9f76-b1e4ec5a1604" class="">En el sentido espacial, la distancia euclidiana desde el origen hasta el punto representado por el vector nos da la &quot;longitud&quot; del vector.</p><p id="fd99dc5d-fb3a-4a90-a8b9-17bb5ca7bf28" class="">En textos matemáticos, a menudo vemos vectores escritos de la siguiente manera:</p><figure id="b0af01c9-2327-4aa3-873f-a5551c449107" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%208.png"><img style="width:69px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%208.png"/></a></figure><figure id="ea030861-fad9-4d67-bef1-af753d0a50c4" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%209.png"><img style="width:137px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%209.png"/></a></figure><p id="dbfefc06-098a-4a1b-8483-103723bd5373" class="">Siendo el primero catalogado como “vector columna” y el segundo como “vector renglón”.</p><h3 id="1030b520-cd95-4bf4-a3b1-3e076ab8ec61" class="">2.1.3 Matriz</h3><p id="3139c171-d24b-4d63-9988-173c6abd0932" class="">Considere una matriz como un grupo de vectores que tienen todos la misma dimensión (número de columnas). De esta forma una matriz es un arreglo bidimensional para el cual tenemos filas y columnas.</p><p id="e565ab0d-84db-4a64-8e35-0b98487408a6" class="">Si se dice que nuestra matriz es una matriz n × m, tiene n filas y m columnas.
+Las matrices son una estructura central en álgebra lineal y aprendizaje automático.</p><figure id="6e712901-e62a-4fee-a0f4-085c9bd61b85" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2010.png"><img style="width:144px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2010.png"/></a></figure><h3 id="cf837617-4cb9-4795-ad3b-a674c24f514e" class="">2.1.4 Tensor</h3><p id="113391f5-4e89-4cfd-83cc-54125dbf3bd6" class="">Un tensor es una matriz multidimensional en el nivel más fundamental. Es una estructura matemática más general que un vector. Podemos ver un vector simplemente como una subclase de tensores.</p><p id="d63f44f1-a365-4b17-af9f-7849af4b624e" class="">Con tensores, las filas se extienden a lo largo del eje <code><em>y</em></code> y las columnas a lo largo del eje <code><em>x</em></code>. Cada eje es una dimensión y los tensores tienen dimensiones adicionales. Los tensores también tienen un <strong>rango</strong>. Comparativamente, un escalar es de <span style="border-bottom:0.05em solid">rango 0 </span>y un vector es de rango 1. También vemos que una matriz es de <span style="border-bottom:0.05em solid">rango 2</span>. Cualquier entidad de rango 3 y superior se considera un tensor.</p><h3 id="0f4aaed8-c97c-4fd0-95d3-02a5a424642a" class="">2.1.5 Hiperplano</h3><p id="fe2ba78b-a7a6-4ec5-98d9-99d9f3760028" class="">Otro objeto de álgebra lineal que debe tener en cuenta es el hiperplano. En el campo de la geometría, el hiperplano es un subespacio de una dimensión menor que su espacio ambiental. En un espacio tridimensional, los hiperplanos tendrían dos dimensiones. En el espacio bidimensional, consideramos que una línea unidimensional es un hiperplano.</p><p id="f0510139-1e86-408a-b949-919a61462c4e" class="">Un hiperplano es una construcción matemática que divide un espacio n dimensional en &quot;partes&quot; separadas y, por lo tanto, es útil en aplicaciones como la clasificación. La optimización de los parámetros del hiperplano es un concepto central en el modelado lineal.</p><h3 id="288645b6-d582-44bc-9d58-aeee415e3be6" class="">2.1.6 Producto Punto</h3><p id="b9d4e1f6-85b2-4359-825d-d8a3a001d04e" class="">Una operación básica de álgebra lineal que vemos a menudo en el aprendizaje automático es el producto punto. El producto punto a veces se denomina &quot;producto escalar&quot; o &quot;producto interno&quot;. El producto punto toma dos vectores de la misma longitud y devuelve un solo número. Esto se hace haciendo coincidir las entradas en los dos vectores, multiplicándolos y luego sumando los productos así obtenidos. Es importante mencionar que este solo número codifica una gran cantidad de información.</p><figure id="f75e622b-4e4c-42f1-9c8e-9c66f4e550f0" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2011.png"><img style="width:132px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2011.png"/></a></figure><p id="1f83326b-1c53-44ca-bb96-33447c2c2d12" class="">Para empezar, el producto escalar es una medida del tamaño de los elementos individuales en cada vector. Dos vectores con valores bastante grandes pueden dar resultados bastante grandes, y dos vectores con valores bastante pequeños pueden dar valores bastante pequeños. Cuando los valores relativos de estos vectores se contabilizan matemáticamente con algo llamado normalización, el producto escalar es una medida de cuán similares son estos vectores. Esta noción matemática de un producto escalar de dos vectores normalizados se llama similitud de coseno.</p><h3 id="89d54e58-2d35-4b12-a90e-3c2aba6877cb" class="">2.1.7 Producto Hadamard (elemento-a-elemento)</h3><p id="d22d642e-f357-44ba-9e23-b3cdc88f211a" class="">Otra operación común de álgebra lineal que vemos en la práctica es el producto de elementos (o el &quot;producto Hadamard&quot;). Esta operación toma dos vectores de la misma longitud y produce un vector de la misma longitud con cada elemento correspondiente multiplicado entre los dos vectores fuente.</p><figure id="d4c47b3c-003a-4451-b000-825b3d20d975" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2012.png"><img style="width:616px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2012.png"/></a></figure><h3 id="4ee6bcb0-4aca-4d9c-a120-ced5ea1546e6" class="">2.1.8 Producto Exterior</h3><p id="5f3d86a0-e547-4ebf-9c27-2d9b04b259e9" class="">Esto se conoce como el &quot;producto tensorial&quot; de dos vectores de entrada. Tomamos cada elemento de un vector columna y lo multiplicamos por todos los elementos en un vector fila creando una nueva fila en la matriz resultante</p><figure id="978cf2ae-5eac-4c79-a2d0-6c6c7a91ed53" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2013.png"><img style="width:235px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2013.png"/></a></figure><h3 id="59aa63ca-7539-4c63-8959-6798af832f70" class="">2.1.9 Sistema de Ecuaciones</h3><p id="22803225-823e-4be3-b5eb-2b7d404251c7" class="">En el mundo del álgebra lineal nos interesa resolver sistemas de ecuaciones lineales de la forma:</p><figure id="1b8ac9d8-f915-456c-895f-8d796aaec2cf" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">Ax = b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span></span></div></figure><p id="4edb067c-f3bf-4812-bcf3-05e73a8acf1e" class="">donde <code><em>A</em></code> es una matriz de nuestro conjunto de vectores de fila de entrada y <code><em>b</em></code> es el vector de columna de etiquetas para cada vector en la matriz A.</p><p id="0c5881fe-f7ea-4cf3-8b5d-aba711b27248" class="">Cada valor independiente de la matriz A es considerado como <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>característica</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> (feature) de nuestros datos de entrada. Una característica es cualquier valor de columna en la matriz de entrada <code><em>A</em></code> que estamos usando como variable independiente. Las características se pueden tomar directamente de los datos de origen, pero la mayoría de las veces vamos a usar algún tipo de transformación para obtener los datos de entrada sin procesar en una forma que sea más apropiada para el modelado.</p><h2 id="ae59ed18-cb5f-4545-a91d-b7821f88c396" class="">2.2 Probabilidad y Estadística</h2><p id="badab695-4bc9-4781-9ca5-8dbb27dcfc57" class="">Algunos de los conceptos básicos en la Estadística son:</p><ol type="1" id="6a630d58-1f2d-4155-b5ab-8b9f68e0ecc0" class="numbered-list" start="1"><li>Probabilidad</li></ol><ol type="1" id="b70fccaa-24bc-466f-9e10-271a4b3e098e" class="numbered-list" start="2"><li>Distribuciones</li></ol><p id="648f870e-8295-4a72-8b69-83373ee31ec2" class="">Existen otras relaciones básicas que se usan en la Estadística Descriptiva y la Estadística Inferencial. Dentro de la Estadística Descriptiva tenemos:</p><ol type="1" id="c079bafc-5906-45dd-9b82-f9347bbe8af3" class="numbered-list" start="1"><li>Histogramas</li></ol><ol type="1" id="a6a0d7be-e40a-4b4b-8dbf-4394cc867545" class="numbered-list" start="2"><li>Boxplots (Diagrama de Cajas y Bigotes)</li></ol><ol type="1" id="19f8609f-cdc3-4bff-bbee-5d8b14a475fc" class="numbered-list" start="3"><li>Scatterplot (Diagrama de Dispersión)</li></ol><ol type="1" id="c9832d10-8b16-4861-ab3b-7a5cbefe372f" class="numbered-list" start="4"><li>Media</li></ol><ol type="1" id="7b6fbaf3-0aca-4afd-a9ac-6bfa82d91724" class="numbered-list" start="5"><li>Desviación Estandar</li></ol><ol type="1" id="2b4b646d-1c30-4b74-a61d-c8cffe606ea8" class="numbered-list" start="6"><li>Coeficiente de Correlación</li></ol><p id="de67c436-6ccc-41f0-9f1a-5fe3019fa372" class="">Esto contrasta con la forma en que las estadísticas inferenciales se ocupan de las técnicas para generalizar de una muestra a una población. Estos son algunos ejemplos de estadística inferencial:</p><ol type="1" id="6b716a1f-b4bf-4d6c-b64d-e2127a49c56b" class="numbered-list" start="1"><li>p-values</li></ol><ol type="1" id="230d6b2e-da33-4573-aed6-e16f9409a9c5" class="numbered-list" start="2"><li>Intervalos de Confianza</li></ol><h3 id="b8eb44cc-7901-41ae-8742-564e47bfba3e" class="">2.2.1 Probabilidad</h3><p id="d56922d9-e6a6-44a0-aa65-23714ffb6df0" class="">Definimos probabilidad de un evento <code><em>E</em></code> como un número siempre entre 0 y 1. En este contexto, el valor 0 infiere que el evento <code><em>E</em></code> no tiene posibilidad de ocurrir, y el valor 1 significa que el evento <code><em>E</em></code> seguramente ocurrirá. Muchas veces veremos esta probabilidad expresada como un número decimal, pero también podemos expresarla como un porcentaje entre 0 y 100%; no veremos probabilidades válidas inferiores al 0 por ciento y superiores al 100 por ciento.</p><p id="48179e39-efac-464d-9172-d1bdedf394c3" class="">El ejemplo más clásico es el de lanzar una moneda al aire. Podemos expresar la probabilidad de un evento de la siguiente manera</p><figure id="45089870-f303-44a1-a3d3-29381d22725e" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">P(E) = 0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0.5</span></span></span></span></span></div></figure><p id="5a69251e-8803-4437-acb2-b616d865a1b0" class="">La probabilidad está en el centro de las redes neuronales y el deep learning debido a su papel en la <strong>extracción y clasificación de características,</strong> dos de las funciones principales de las redes neuronales profundas.</p><h3 id="ff05486a-d3f8-41c2-8630-9e1c76a6a94c" class="">2.2.2 Probabilidad Condicional</h3><p id="014ffa29-3aa1-4b8a-af8a-c42edcd471f5" class="">Cuando queremos saber la probabilidad de un evento dado en base a la presencia existente de que ocurra otro evento, expresamos esto como una probabilidad condicional. Esto se expresa en la literatura en la forma:</p><figure id="4f5c360e-40fa-4189-b8ef-6e0aebdc8f98" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>E</mi><mi mathvariant="normal">∣</mi><mi>F</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(E|F)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mclose">)</span></span></span></span></span></div></figure><p id="c64e9ac0-fc48-4d16-88a3-1bde1ac02b09" class="">donde:</p><ul id="359813f3-289b-47a7-b5e2-d54c5fb3fdb7" class="bulleted-list"><li style="list-style-type:disc"><code><em>E</em></code> es el evento para el cual estamos interesados en una probabilidad.</li></ul><ul id="e331b1d5-ee89-4988-8a4f-577d1a72b085" class="bulleted-list"><li style="list-style-type:disc"><code><em>F</em></code> es el evento que ya ha ocurrido</li></ul><p id="997bba94-b099-4f03-a0e5-0e19f5507036" class="">A veces, escucharemos el segundo evento, <code><em>F</em></code>, referido como la &quot;condición&quot;. La probabilidad condicional es interesante en el aprendizaje automático y el aprendizaje profundo porque a menudo nos interesa saber cuándo suceden varias cosas y cómo interactúan. Estamos interesados en las probabilidades condicionales en el aprendizaje automático en el contexto en el que aprenderíamos un clasificador aprendiendo</p><figure id="e48c15ef-76f3-4cd6-a227-eaf42879bff2" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>E</mi><mi mathvariant="normal">∣</mi><mi>F</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(E|F)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mclose">)</span></span></span></span></span></div></figure><p id="6a87dfdb-b556-46d2-b9ba-846a9fc018d7" class="">donde <code><em>E</em></code> es nuestra etiqueta y <code><em>F</em></code> es un número de atributos sobre la entidad para la que estamos prediciendo <code><em>E</em></code><em>.</em></p><h3 id="519331aa-e76d-461d-9ad6-984e67a9d09b" class="">2.2.3 Teorema de Bayes</h3><p id="c211555a-e018-455e-ab4f-6b43463dabd6" class="">Una de las aplicaciones más comunes de las probabilidades condicionales es el<strong> teorema de Bayes </strong>(o fórmula de Bayes). En el campo de la medicina, lo vemos utilizado para calcular la probabilidad de que un paciente que da positivo en una prueba para una enfermedad específica realmente tenga la enfermedad.</p><p id="adc52222-d2c3-4672-87c6-0a6a51506271" class="">Definimos la fórmula de Bayes para dos eventos cualesquiera, A y B, como</p><figure id="8cbc2f69-47a4-4545-874a-d380f77787c8" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2014.png"><img style="width:132px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2014.png"/></a></figure><h3 id="94747f48-b32f-45a9-8a16-decb212eace9" class="">2.2.4 Distribuciones</h3><p id="d4b7eb9f-a1e0-4a72-8c17-2be41239ec18" class="">Una distribución de probabilidad es una especificación de la estructura estocástica de las variables aleatorias. En estadística, nos basamos en hacer suposiciones sobre cómo se distribuyen los datos para hacer inferencias sobre los datos.</p><p id="4df60924-090a-4fa1-93ab-e3c1c84d5dec" class="">Queremos una fórmula que especifique qué tan frecuentes son los valores de las observaciones en la distribución y cómo los valores pueden ser tomados por puntos en la distribución. Una distribución común se conoce como <strong>distribución normal</strong> (también llamada distribución gaussiana o <em>curva de campana</em>). Nos gusta ajustar un conjunto de datos a una distribución porque si el conjunto de datos está razonablemente cerca de la distribución, podemos hacer suposiciones basadas en la distribución teórica sobre cómo operamos con los datos.</p><p id="f61a8227-f621-4412-a5a6-077ec673e466" class="">Clasificamos las distribuciones en continuas o discretas. Una distribución discreta tiene datos que pueden asumir solo ciertos valores. En una distribución continua, los datos pueden ser cualquier valor dentro del rango. Un ejemplo de una distribución continua sería la distribución normal. Un ejemplo de distribución discreta sería la distribución binomial.</p><figure id="773a0ce5-a6b8-433c-b1d3-360db4622f30" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2015.png"><img style="width:426px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2015.png"/></a></figure><h2 id="861dcb8e-85cf-4bd6-a891-7e43fc06d05a" class="">2.3 Cálculo y Optimización</h2><p id="1b73a245-9ce6-469b-97df-740e66d3a2e2" class="">Fundamentalmente, el aprendizaje automático se basa en técnicas algorítmicas para minimizar el error en esta ecuación a través de la <em>optimización</em>.</p><p id="2c089acb-a51a-4a8b-9d61-9035930e668e" class="">En optimización, nos enfocamos en cambiar los números en el vector de columna x (vector de parámetros) hasta que encontremos un buen conjunto de valores que nos brinde los resultados más cercanos a los valores reales. Cada peso en la matriz de peso se ajustará después de que la <strong>función de pérdida</strong> calcule el error (basado en el resultado real, como el vector de la columna b) producido por la red. Una matriz de error que atribuya una parte de la pérdida a cada peso se multiplicará por los pesos mismos.</p><h3 id="2c81b0ec-2472-49a7-be4e-7c26a804daef" class="">2.3.1 Regresión</h3><p id="b6b0ae97-11e9-49ed-8979-f7b754b3e879" class="">La regresión se refiere a funciones que intentan predecir una salida de valor real. Este tipo de función estima la variable dependiente conociendo la variable independiente. La clase de regresión más común es la <strong>regresión lineal</strong>. La regresión lineal intenta generar una función que describa la relación entre x e y y, para valores conocidos de x, predice valores de y que resultan ser precisos.</p><figure id="c0242531-f980-4e1c-b658-58a7790dbe6b" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>B</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y = a + Bx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">x</span></span></span></span></span></div></figure><p id="e02857fc-e9a2-4e03-9688-b85107b58543" class="">donde <code><em>a</em></code> es la intersección con y, <code><em>B</em></code> son las características de entrada y <code><em>x</em></code> es el vector de parámetros</p><figure id="b6b9570e-2302-42b0-bfde-a5956522c108" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2016.png"><img style="width:315px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2016.png"/></a></figure><h3 id="46a8e2a6-d6ca-40e3-ba4d-ca13b3ada67a" class="">2.3.2 Optimización</h3><p id="d7c01e01-f553-461e-b563-f4a420441fc6" class="">El proceso antes mencionado de ajustar pesos para producir conjeturas cada vez más precisas sobre los datos se conoce como <em>optimización de parámetros</em>. Puedes pensar en este proceso como un método científico. Formulamos una hipótesis, la comparamos con la realidad y refinamos o reemplazamos esa hipótesis una y otra vez para describir mejor los eventos en el mundo.</p><p id="c003b151-bb8a-42aa-b23c-bbda09fdfd95" class="">Cada conjunto de pesos representa una hipótesis específica sobre lo que significan las entradas; es decir, cómo se relacionan con los significados contenidos en las etiquetas de uno.</p><p id="bd004dc8-c43d-4fb7-919d-959a1d65c89a" class="">Los conceptos más importantes en la optimización aplicada al aprendizaje automático son:</p><ul id="04667412-01c8-4ac6-952c-859400a14dd1" class="bulleted-list"><li style="list-style-type:disc"><em><em><em><em><em><em><em><em><em><em>Parámetros</em></em></em></em></em></em></em></em></em></em>: Transformar la entrada para ayudar a determinar las clasificaciones que infiere la red</li></ul><ul id="e8a0710e-3250-41c4-b384-c9fe499d5082" class="bulleted-list"><li style="list-style-type:disc"><em><em><em><em><em>Loss function</em></em></em></em></em>: Mide qué tan bien clasifica (minimiza el error) en cada paso</li></ul><ul id="bb7ff341-fa8c-407f-91d1-4a5dd24ef1da" class="bulleted-list"><li style="list-style-type:disc"><em><em><em><em><em><em>Función de Optimización</em></em></em></em></em></em>:  Guía hacia los puntos de menor error.</li></ul><h3 id="0ee29aca-467f-4bc4-ad2c-7af4b6acf150" class="">2.3.3 Descenso de Gradiente</h3><p id="bf3a1577-319a-4041-b388-f3428836a3de" class="">En el descenso de gradiente, podemos imaginar la calidad de las predicciones de nuestra red (en función de los valores de peso/parámetro) como un paisaje. Las colinas representan ubicaciones (valores de parámetros o pesos) que dan mucho error de predicción; los valles representan ubicaciones con menos error. Elegimos un punto en ese paisaje en el que colocar nuestro peso inicial. Luego, podemos seleccionar el peso inicial en función del conocimiento del dominio (si estamos entrenando una red para clasificar una especie de flor, sabemos que la longitud de los pétalos es importante, pero el color no lo es). O, si dejamos que la red haga todo el trabajo, podemos elegir los pesos iniciales al azar</p><p id="7de0576f-902b-40ea-bc3c-366ff8d055e3" class="">El propósito es mover ese peso cuesta abajo, a áreas de menor error, lo más rápido posible. Un algoritmo de optimización como el descenso de pendiente puede detectar la pendiente real de las colinas con respecto a cada peso; es decir, sabe en qué dirección está abajo. El descenso de gradiente mide la pendiente (el cambio en el error causado por un cambio en el peso) y lleva el peso un paso hacia el fondo del valle. Lo hace tomando una derivada de la función de pérdida para producir el gradiente. El gradiente da la dirección para el siguiente paso en el algoritmo de optimización.</p><figure id="4a29c017-92d8-43aa-aa81-23ab2428e921" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2017.png"><img style="width:456px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2017.png"/></a></figure><h2 id="8484527c-8a09-40d8-a49e-922fccda69c0" class="">2.4 Workflow de Deep Learning</h2><p id="f266bac4-7d3f-4c88-b60e-48e2652ae782" class="">Existen 10 asos que siempre se deben de seguir al momento de trabajar con redes neuronales, donde toma como base el método científico:</p><ol type="1" id="f64e45de-ac9c-4535-a5a3-dd66446d9cdc" class="numbered-list" start="1"><li>Definición del problema</li></ol><ol type="1" id="c0e21473-0c60-4035-b23e-c5d2f5526ab3" class="numbered-list" start="2"><li>Recolección de los datos</li></ol><ol type="1" id="e6ae58ae-c1d1-4b39-8055-8b5b3963abd2" class="numbered-list" start="3"><li>Procesar los datos</li></ol><ol type="1" id="d2f82a78-b22f-46a8-a9af-5ed9b7f2b333" class="numbered-list" start="4"><li>Definir los datos de entrenamiento y datos de prueba</li></ol><ol type="1" id="2819dd2b-9658-40ff-85ff-e40feb2703e5" class="numbered-list" start="5"><li>Definir un modelo de red neuronal</li></ol><ol type="1" id="6dce65ed-2c12-4957-84c1-1b8bb41a101e" class="numbered-list" start="6"><li>Configurar el proceso de aprendizaje</li></ol><ol type="1" id="5dd22b86-ad7d-4508-b7f2-20138b71920f" class="numbered-list" start="7"><li>Inicializar los pesos y sesgos</li></ol><ol type="1" id="6ab172c8-f8d9-4fde-bb88-61353ba08d9b" class="numbered-list" start="8"><li>Entrenar al modelo</li></ol><ol type="1" id="b0068512-3789-4706-a60a-ac98c8211498" class="numbered-list" start="9"><li>Validar el modelo</li></ol><ol type="1" id="4d443466-7046-4ea7-b975-51c0bc3a6b87" class="numbered-list" start="10"><li>Usar el modelo</li></ol><figure id="4b47a81f-afa0-4d74-ad55-5dbe412bad07" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2018.png"><img style="width:529px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2018.png"/></a></figure><h1 id="8dc7bff8-e937-4f2b-8d95-1d3be219f4f4" class="">3. Descripción del Problema: Clasificación de números escritos a mano usando el dataset MNIST</h1><h2 id="849142cd-1299-416e-a08f-f3782402e149" class="">3.1 Definición</h2><p id="6af927b7-ffc3-47f6-b890-97502847eea4" class="">El dataset MNIST (Modified National Institute of Standards and Technology) o MNIST Database, en una base de datos que contiene una recopilación de números (dígitos) escritos a mano. Este conjunto fue creado a partir de un <em>re-muestreo</em> de un conjunto previo conocido como NIST.</p><figure id="03c80d84-a3b9-4ae2-a9a0-4627da4d9507" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2019.png"><img style="width:557px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2019.png"/></a></figure><h2 id="d0b6b21b-c7fe-4e62-a57d-8d77a8951b49" class="">3.2 Historia del MNIST</h2><p id="fa859521-c18c-42fa-9241-7b6e225bb39b" class=""><em>National Institute of Standards and Technology</em> (<strong>NIST</strong>) es un instituto en los Estados Unidos, cuya misión es promover la innovación y la competencia industrial en el país. Como parte de esta misión, los científicos e ingenieros del NIST continuamente refinan la ciencia de la medición (metrología) y utilizan grandes bases de datos para su continua experimentación.</p><figure id="25da5116-1689-4658-8a8e-a937bf1f217f" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2020.png"><img style="width:644px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2020.png"/></a></figure><p id="37c6a66b-1c46-4303-8a8a-ec8a13590b74" class="">El conjunto de imágenes en el MNIST database fue creado en 1994 como una combinación de dos bases de datos en NIST: <em>Special Database 1</em> and <em>Special Database 3</em>. Estas bases de datos consistían en dígitos escritos por estudiantes de preparatoria y empleados de la Oficina del Censo de los Estados Unidos, respectivamente.</p><h2 id="37105a0b-ce46-4437-bd3a-36ff93cee7fe" class="">3.3 Características</h2><p id="e0f7a09e-69be-465f-a461-49a93d8d73f6" class="">Algunas características de este dataset son:</p><ul id="3eca6b3b-2ab8-446f-8654-ab5ff8e84c0f" class="bulleted-list"><li style="list-style-type:disc">Cuenta con 60,000 imágenes de entrenamiento y 10,000 imágenes de prueba.<ul id="861346a1-4a77-4a58-a109-d9e3a8e0e1d5" class="bulleted-list"><li style="list-style-type:circle">Cada imágen corresponde a un número en el rango [0,9]</li></ul><ul id="9f873236-6539-42f4-95a9-6829c8ac8c45" class="bulleted-list"><li style="list-style-type:circle">Las imágenes tienen un tamaño de 28x28x1</li></ul></li></ul><ul id="e1071be1-4de1-4e6e-b19b-00df8a7776cf" class="bulleted-list"><li style="list-style-type:disc">Este dataset se considera como &quot;resuelto&quot;, ya que se ha logrado alcanzar tasas de error considerablemente pequeñas para este conjunto.</li></ul><ul id="61288408-ebf5-41b1-8c71-ba9c68fc8f3e" class="bulleted-list"><li style="list-style-type:disc">Es un conjunto &quot;limpio&quot;, ya que los datos en este conjunto están ya limpias y curadas especialmente para entrenamiento.<ul id="50da75cb-65ef-43c5-bc9b-65bdcdd3a13b" class="bulleted-list"><li style="list-style-type:circle">Si bien esto facilita el entrenamiento, no necesariamente representa una muestra representativa de la vida real.</li></ul><ul id="3aba87a8-b6df-4e81-a6d8-930957dc4afc" class="bulleted-list"><li style="list-style-type:circle">Las imagenes se encuentran centradas y normalizadas.</li></ul></li></ul><h1 id="5583cf7f-afa0-45c7-b065-b417c283fdc6" class="">4. Desarrollo matemático del Problema</h1><h3 id="0d3e2ba7-6b40-40f9-8b63-58fe6ad9fcbf" class="">4.1 Explicación del problema y de la red neuronal</h3><p id="daa813fe-4ca6-40b7-a82a-b6598c004164" class="">Podemos dividir el problema de reconocer dígitos escritos a mano en dos subproblemas. Primero, nos gustaría una forma de dividir una imagen que contiene muchos dígitos en una secuencia de imágenes separadas, cada una con un solo dígito. Por ejemplo, nos gustaría separar la siguiente imagen:</p><figure id="6ef683e6-b114-4a3d-a731-6e3652e0b8bf" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2021.png"><img style="width:623px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2021.png"/></a></figure><p id="afb180c9-c73b-4a16-996e-84e7f12316af" class="">En 6 diferentres imágenes:</p><figure id="9b7d556f-5c3d-4aed-b023-d3b96c93a0bc" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2022.png"><img style="width:463px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2022.png"/></a></figure><p id="e7c01e68-765b-483e-94ef-08bdf951a7c2" class="">Los humanos resolvemos este problema de segmentación con facilidad, pero es un desafío para un programa de computadora dividir correctamente la imagen. Una vez que la imagen ha sido segmentada, el programa necesita clasificar cada dígito individual. Entonces, por ejemplo, nos gustaría que nuestro programa reconozca que el primer dígito de arriba,</p><figure id="4e5da98f-675a-447a-a041-f5c7edd53d48" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2023.png"><img style="width:82px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2023.png"/></a></figure><p id="88684b76-3e5c-4389-8d03-983341d79c40" class="">es un 5.</p><p id="ec8c105d-6ba5-4bde-84de-42c61b8c3219" class="">Nos concentraremos en escribir un programa para resolver el segundo problema, es decir, clasificar dígitos individuales. Hacemos esto porque resulta que el problema de segmentación no es tan difícil de resolver, una vez que tienes una buena forma de clasificar dígitos individuales. Hay muchos enfoques para resolver el problema de la segmentación. Un enfoque consiste en probar muchas formas diferentes de segmentar la imagen, utilizando el clasificador de dígitos individuales para puntuar cada segmentación de prueba. Una segmentación de prueba obtiene una puntuación alta si el clasificador de dígitos individuales confía en su clasificación en todos los segmentos, y una puntuación baja si el clasificador tiene muchos problemas en uno o más segmentos. La idea es que si el clasificador tiene problemas en alguna parte, probablemente tenga problemas porque la segmentación se eligió incorrectamente. Esta idea y otras variaciones se pueden utilizar para resolver bastante bien el problema de la segmentación. Entonces, en lugar de preocuparnos por la segmentación, nos concentraremos en desarrollar una red neuronal que pueda resolver el problema más interesante y difícil, a saber, reconocer dígitos escritos a mano individuales.</p><p id="8a0f412e-1bcd-44fc-922e-9c3f82f6e684" class="">Para reconocer dígitos individuales usaremos una red neuronal de tres capas:</p><figure id="f7343cb2-e94b-4f48-b5a7-96c97d63d95c" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2024.png"><img style="width:537px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2024.png"/></a></figure><p id="64ecea04-4a6e-4afd-b85b-ffa1b6d8f6be" class="">La capa de entrada de la red contiene neuronas que codifican los valores de los píxeles de entrada. Como se analiza en la siguiente sección, nuestros datos de entrenamiento para la red consistirán en muchas imágenes de dígitos escaneados escritos a mano de <em>28 x 28</em> pixeles, por lo que la capa de entrada contiene <em><em><em><em><em><em><em><em><em><em><em><em><em><em>784 = 28 x 28 </em></em></em></em></em></em></em></em></em></em></em></em></em></em>neuronas. Los píxeles de entrada son en escala de grises, con un valor de 0 que representa el blanco, un valor de 1 que representa el negro y valores intermedios que representan sombras de gris que se oscurecen gradualmente.</p><p id="10bb5a0b-45de-49e5-b255-2b8c28d9f240" class="">La segunda capa de la red es una capa oculta. Denotamos el número de neuronas en esta capa oculta por , y experimentaremos con diferentes valores para n. El ejemplo que se muestra ilustra una pequeña capa oculta que contiene solo n = 15 neuronas.</p><p id="7158a3bb-4d88-4eb8-9fe6-9c6a02dfb006" class="">La capa de salida de la red contiene 10 neuronas. Si la primera neurona se dispara, es decir, tiene una salida ≈1, eso indicará que la red cree que el dígito es un 0. Si la segunda neurona se dispara, eso indicará que la red cree que el dígito es un 1. Y así sucesivamente. . Con un poco más de precisión, numeramos las neuronas de salida del 0 al 9 y determinamos qué neurona tiene el valor de activación más alto. Si esa neurona es, digamos, la neurona número 6, entonces nuestra red adivinará que el dígito de entrada era un 6. Y así sucesivamente para las otras neuronas de salida.</p><h3 id="8da6a3ca-0235-4d9b-96c8-58d6180f9dc4" class="">4.2 Aplicando el descenso de gradiente</h3><p id="b27dd4c2-1722-4cae-92a8-3353ef441006" class="">Usaremos la notación <code><em>x</em></code> para denotar los datos de entrada. Será conveniente considerar cada entrada de entrenamiento <code><em>x</em></code> como un vector dimensional de <code><em><em><em><em><em><em><em><em><em><em><em><em><em>28 x 28 = 784</em></em></em></em></em></em></em></em></em></em></em></em></em></code><em><em><em><em><em><em><em><em><em><em><em><em><em> </em></em></em></em></em></em></em></em></em></em></em></em></em>dimensiones. Cada entrada en el vector representa el valor de gris para un solo píxel en la imagen. Denotaremos la salida deseada correspondiente por:</p><figure id="d3d91a3e-da83-4cd4-bb63-b8b42576eb22" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>y</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = y(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></div></figure><p id="aaa77885-4fbd-4d1b-a8f2-8721fc406e54" class="">donde <code><em>y</em></code> ds un vector de dimensión 10. Por ejemplo, si una imagen de entrenamiento en particular, <code><em>x</em></code>, muestra un <em>6</em>, entonces:</p><figure id="6ae7d31c-6fe3-4d7f-aeca-c596685994bf" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><msup><mo stretchy="false">)</mo><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">y(x) = (0, 0, 0, 0, 0, 0, 1, 0, 0, 0)^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1413309999999999em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span></span></div></figure><p id="1527ecd4-111d-4f56-8836-c397476f1aff" class="">es la salida deseada de la red. Nótese que <code><em>T</em></code> representa la traspuesta, convirtiendo un vector fila en un vector ordinario (columna).</p><p id="eb2ba8be-f3f2-45fb-b2d3-dd9ef0a6550c" class="">Lo que nos gustaría es un algoritmo que nos permita encontrar pesos y sesgos para que la salida de la red se aproxime a <code><em>y(x) </em></code>para todos las entradas de entrenamiento <code><em>x</em></code>. Para cuantificar qué tan bien estamos logrando este objetivo, definimos una <em>función de costo</em>:</p><figure id="a9d844ed-e7a6-4e86-83cc-bed039467c85" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2025.png"><img style="width:288px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2025.png"/></a></figure><p id="a4e39c0f-45ff-4fa5-89a1-617c7829d686" class="">Aquí, <code><em>w</em></code> denota la colección de todos los pesos en la red, <code><em>b</em></code> todos los sesgos, <code><em>n</em></code> el nímero total de datos de entrenamiento, <code><em>a</em></code> es el vector de salidas de la red cuando <code><em>x</em></code> es la entrada, y la suma es sobre todas las entradas de entrenamiento <code><em>x</em></code>. Por supuesto, la salida <code><em>a</em></code> depende en <code><em>x</em></code>, <code><em>w</em></code> y <code><em>b</em></code><em>. </em>La notación <code><em>∥v∥</em></code><em> </em>denota la ongitud para un vector <code><em>v</em></code></p><p id="dd0a9b0c-54e1-41e0-9707-57ba30cc927a" class="">Llamaremos a <code><em>C</em></code> la <em>función de coste cuadrática</em>; a veces también se conoce como el error cuadrático medio o simplemente <strong>MSE.</strong></p><p id="31fd82fc-e54e-4e88-a8a9-36b500817178" class="">Inspeccionando la función, vemos que </p><figure id="bb9c0898-61ce-4bfd-ab2f-9666dc07ab0d" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>w</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(w,b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span></span></div></figure><p id="0e59adbc-18ce-46d7-9e7d-4189d97aa27b" class="">es no negativa, ya que todos los términos de la suma son no negativos. Además, el costo <code><em><em><em>C(w,b)</em></em></em></code> se vuelve pequeño, es decir,</p><figure id="7c8dc047-01bf-4509-88c7-9980ebb05ad9" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>w</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo><mo>≈</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C(w,b) \approx 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></span></div></figure><p id="a719414b-006f-4adc-8306-8d550e8316cf" class="">cuando <code><em><em><em>y(x)</em></em></em></code> es aproximadamente igual a la salida <code><em>a</em></code> por cada entrada <code><em>x</em></code>.</p><p id="7ed00500-3884-4d59-9e37-091aed4f1957" class="">Por el contrario, no funciona tan bien cuando <code><em>C(w,b)</em></code> es grande; eso significaría que <code><em>y(x)</em></code> no está cerca de la salida <code><em>a</em></code> para una gran cantidad de entradas. Entonces, el objetivo de nuestro algoritmo de entrenamiento será minimizar el costo <code><em>C(w,b)</em></code> en función de los pesos y sesgos. En otras palabras, queremos encontrar un conjunto de pesos y sesgos que hagan que el costo sea lo más pequeño posible. Lo haremos usando un algoritmo conocido como <em>descenso de gradiente</em>.</p><p id="cc8caa3f-994a-4ec5-b768-a57d06f24f3e" class="">Bien, supongamos que estamos tratando de minimizar alguna función, <code><em>C(v).</em></code> Esta podría ser cualquier función de valor real de muchas variables,</p><figure id="c9889823-f6b1-49eb-9b2b-00839f168af9" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>v</mi><mo>=</mo><msub><mi>v</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>v</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">v = v_1, v_2, ...</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">...</span></span></span></span></span></div></figure><p id="5868f337-0dcb-47e6-8863-7dd89783e016" class="">Nótese que hemos reemplazado la notación <code><em>w</em></code> y <code><em>b</em></code> por <code><em>v</em></code> para enfatizar que esta podría ser cualquier función; ya no estamos pensando específicamente en el contexto de las redes neuronales. Para minimizar <code><em>C(v)</em></code>, nos ayuda imaginar a <code><em>C</em></code> como una función de solo dos variables, a las que llamaremos v<strong><strong>₁ </strong></strong>y v<strong>₂</strong></p><figure id="ce3bc30c-2741-4457-80dc-f284516c91b8" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2026.png"><img style="width:407px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2026.png"/></a></figure><p id="3ef32819-cd08-4b1e-afa5-9b812f507b64" class="">Lo que nos gustaría es encontrar dónde <code><em>C</em></code> alcanza su mínimo global. Ahora, por supuesto, para la función trazada arriba, podemos observar el gráfico y encontrar el mínimo. Una función general, <code><em>C</em></code>, puede ser una función complicada de muchas variables y, por lo general, no será posible simplemente observar el gráfico para encontrar el mínimo.</p><p id="1f62eef8-b359-4d44-b058-c97899806be8" class="">Una forma de atacar el problema es usar el cálculo para tratar de encontrar el mínimo analíticamente. Podríamos calcular derivadas y luego tratar de usarlas para encontrar lugares donde <code><em>C</em></code> es un extremo. Con un poco de suerte, eso podría funcionar cuando <code><em>C</em></code> es una función de solo una o unas pocas variables. Pero se convertirá en una pesadilla cuando tengamos muchas más variables. Y para las redes neuronales, a menudo queremos <em>muchas más variables</em>: las redes neuronales más grandes tienen funciones de costo que dependen de miles de millones de pesos y sesgos de una manera extremadamente complicada. Usar el cálculo para minimizar eso simplemente no funcionará.</p><p id="6f74b7b9-97c5-4d1c-bf3f-7838b37dd35a" class="">Pensemos que tenemos una pelota sobre un valle, veamos qué es lo que sucede cuando movemos la pelota una pequeña cantidad <code><em>Δ</em></code><code>v</code><code><strong><strong>₁</strong></strong></code>en la dirección <code><em>v</em></code><code><em><strong><strong>₁</strong></strong></em></code> y una pequeña cantidad <code><em>Δv</em></code><code><em><strong>₂</strong></em></code>
+en la dirección <code><em>v</em></code><code><em><strong>₂</strong></em></code>. El cálculo nos dice que <code><em>C</em></code> cambia de la siguiente manera:</p><figure id="bda00ef5-625a-4748-a461-6aa2173ab822" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2027.png"><img style="width:266px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2027.png"/></a></figure><p id="349ab704-69f7-4b4f-8fd3-5f52a5d739ca" class="">Vamos a encontrar una manera de elegir <code><em>Δ</em></code><code>v</code><code><strong><strong>₁</strong></strong></code> y <code><em>Δv</em></code><code><em><strong>₂</strong></em></code> para hacer <code><em>ΔC</em></code> negativo; es decir, los elegiremos para que la pelota ruede hacia el valle. Para descubrir cómo hacer esa elección, es útil definir <code><em>Δv</em></code> como el vector de cambios en v,</p><figure id="46c3117a-bbd7-479f-930a-30e843fe43e7" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>v</mi><mo>=</mo><mo stretchy="false">(</mo><mi mathvariant="normal">Δ</mi><msub><mi>v</mi><mn>1</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">Δ</mi><msub><mi>v</mi><mn>2</mn></msub><msup><mo stretchy="false">)</mo><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\Delta v = (\Delta v_1, \Delta v_2)^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1413309999999999em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span></span></div></figure><p id="5bf589ee-bc14-4439-8bee-87f954290cc0" class="">donde <code><em>T</em></code> es el operador de la traspuesta, convirtiendo vectores fila en vectores columna. También definiremos el gradiente de <code><em>C</em></code> como el vector de derivadas parciales,</p><figure id="75558380-c071-4a1d-a286-aca69c11d6db" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>C</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>v</mi><mn>1</mn></msub></mrow></mfrac><mo separator="true">,</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>C</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>v</mi><mn>2</mn></msub></mrow></mfrac><msup><mo stretchy="false">)</mo><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">(\frac{\partial C}{\partial v_1},\frac{\partial C}{\partial v_2})^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.20744em;vertical-align:-0.8360000000000001em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span></span></div></figure><p id="186f9238-ccbd-4843-80e0-614287c94ad5" class="">Denotamos el <strong>vector gradiente</strong> por <code><em>∇ C</em></code><em> </em></p><figure id="58feb2a1-6322-4635-a404-c80552db9205" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2028.png"><img style="width:215px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2028.png"/></a></figure><p id="8e7ef9ea-0882-4379-adb6-df38e21c2d03" class="">Con estas definiciones, la expresión de arriba se puede definir como,</p><figure id="58393000-a687-4262-b198-9979c21f527b" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2029.png"><img style="width:189px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2029.png"/></a></figure><p id="90a9a6f0-15c4-4750-bce5-9db51ac3ed60" class=""><code><em>∇ C</em></code> relaciona los cambios en <code><em>v</em></code> con los cambios en <code><em>C</em></code>, tal como esperaríamos que hiciera algo llamado gradiente. Pero lo realmente emocionante de la ecuación es que nos permite ver cómo elegir <code><em>Δv</em></code> para hacer que <code><em>Δ C</em></code><em> </em> sea negativo. En particual, si elegimos</p><figure id="665e1de4-9b4e-4914-b7d0-80b70b4524ad" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2030.png"><img style="width:145px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2030.png"/></a></figure><p id="abb7bd62-3eae-4684-ba2f-2a1bba4e543e" class="">donde <code><em>η</em></code> es un parámetro positivo (conocido como el <em>learning rate</em>). Mediante los cambios de posición, vamos ir decreciendo a <code><em>C</em></code><em> </em>hasta - esperemos - encontrar el mínimo global.</p><p id="d3d06e63-27dd-4693-af76-96e4a188505c" class="">Resumiendo, la forma en que funciona el algoritmo de descenso del gradiente es calcular repetidamente el gradiente <code><em>∇ C</em></code> y luego moverse en la dirección opuesta, &quot;cayendo&quot; por la pendiente del valle. Podemos visualizarlo así:</p><figure id="b9e83f9c-94c4-4116-9e28-97e7502ffdec" class="image"><a href="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2031.png"><img style="width:812px" src="MCD%20RedesNeuronales%20Proyecto%2013d57348939a436b907720411ef1657c/Untitled%2031.png"/></a></figure><h1 id="a712ee5c-27c5-4700-a2b5-072ff17f433c" class="">Referencias</h1><ul id="a1dc641b-b54f-4bc5-a1f5-cd5c7d48c5a2" class="bulleted-list"><li style="list-style-type:disc">Patterson, J., &amp; Gibson, A. (2017). Deep Learning - A practitioner&#x27;s Approach. O&#x27;Reilly.</li></ul><ul id="ab01fdb7-29cf-4827-a121-8b2b86f4c87f" class="bulleted-list"><li style="list-style-type:disc">Aggarwal, C. (2018). Neural Networks and Deep Learning. A Textbook</li></ul><p id="3165f2eb-d699-4460-986c-4bf2337e3b0d" class="">
+</p></div></article></body></html>
